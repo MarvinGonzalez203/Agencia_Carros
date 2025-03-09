@@ -78,6 +78,7 @@
             this.btnEliminar.TabIndex = 29;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // gboxClientes
             // 
@@ -158,6 +159,7 @@
             this.btnActualizar.TabIndex = 23;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // txtSalario
             // 
@@ -197,14 +199,14 @@
             this.label7.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(459, 96);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(86, 25);
+            this.label7.Size = new System.Drawing.Size(81, 25);
             this.label7.TabIndex = 12;
-            this.label7.Text = "Salario:";
+            this.label7.Text = "Precio:";
             // 
             // txtFechaContratacion
             // 
             this.txtFechaContratacion.Font = new System.Drawing.Font("Calisto MT", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFechaContratacion.Location = new System.Drawing.Point(220, 215);
+            this.txtFechaContratacion.Location = new System.Drawing.Point(160, 220);
             this.txtFechaContratacion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtFechaContratacion.Name = "txtFechaContratacion";
             this.txtFechaContratacion.Size = new System.Drawing.Size(220, 32);
@@ -216,9 +218,9 @@
             this.label4.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(8, 222);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(206, 25);
+            this.label4.Size = new System.Drawing.Size(57, 25);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Fecha Contratacion:";
+            this.label4.Text = "Año:";
             // 
             // txtMarca
             // 

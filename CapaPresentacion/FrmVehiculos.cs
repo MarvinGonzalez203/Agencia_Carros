@@ -18,11 +18,12 @@ namespace CapaPresentacion
             InitializeComponent();
         }
 
-        public void MtdMostrarEmpleado()
+        public void MtdMostrar()
         {
-            CD_Empleados cd_empleado = new CD_Empleados();
-            DataTable dtMostrarEstudiantes = cd_empleado.MtdMostrarEmpleados();
-            dgvEmpleados.DataSource = dtMostrarEstudiantes;
+
+            CD_Vehiculos mostrar = new CD_Vehiculos();
+            DataTable dtMostrar = mostrar.MtMostrar();
+            dgvEmpleados.DataSource = dtMostrar;
         }
 
 
@@ -30,7 +31,7 @@ namespace CapaPresentacion
 
         private void FrmEmpleados_Load(object sender, EventArgs e)
         {
-            MtdMostrarEmpleado();
+            MtdMostrar();
         }
 
         private void dgvEmpleados_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -38,12 +39,9 @@ namespace CapaPresentacion
             txtVehiculoId.Text = dgvEmpleados.SelectedCells[0].Value.ToString();
             txtMarca.Text = dgvEmpleados.SelectedCells[1].Value.ToString();
             txtApellido.Text = dgvEmpleados.SelectedCells[2].Value.ToString();
-            txtFechaNacimiento.Text = dgvEmpleados.SelectedCells[3].Value.ToString();
-            txtFechaContratacion.Text = dgvEmpleados.SelectedCells[4].Value.ToString();
-            txtDepartamentoId.Text = dgvEmpleados.SelectedCells[5].Value.ToString();
-            txtPuestoTrabajo.Text = dgvEmpleados.SelectedCells[6].Value.ToString();
-            txtSalario.Text = dgvEmpleados.SelectedCells[7].Value.ToString();
-            cboxEstado.Text = dgvEmpleados.SelectedCells[8].Value.ToString();
+            txtFechaContratacion.Text = dgvEmpleados.SelectedCells[3].Value.ToString();
+            txtSalario.Text = dgvEmpleados.SelectedCells[4].Value.ToString();
+            cboxEstado.Text = dgvEmpleados.SelectedCells[5].Value.ToString();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -56,34 +54,78 @@ namespace CapaPresentacion
             txtVehiculoId.Clear();
             txtMarca.Clear();
             txtApellido.Clear();
-            txtFechaNacimiento.Clear();
             txtFechaContratacion.Clear();
-            txtDepartamentoId.Clear();
-            txtPuestoTrabajo.Clear();
             txtSalario.Clear();
-            cboxEstado.Text="";
+            cboxEstado.Text = "";
         }
+
+
+      
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            CD_Empleados cd_empleado = new CD_Empleados();
+            CD_Vehiculos conn = new CD_Vehiculos();
 
             try
             {
-                cd_empleado.MtdAgregarEmpleados(txtMarca.Text, txtApellido.Text, txtFechaNacimiento.Text, txtFechaContratacion.Text, txtDepartamentoId.Text, txtPuestoTrabajo.Text, txtSalario.Text, cboxEstado.Text);
-                MessageBox.Show("El empleado se agrego con exito", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                conn.MtInsertar(txtMarca.Text,txtApellido.Text, int.Parse(txtFechaContratacion.Text),decimal.Parse(txtSalario.Text),cboxEstado.Text);
 
-                MtdMostrarEmpleado();
-
+                MessageBox.Show("El Vehiculo se agregó con éxito", "Correcto",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
             catch (Exception ex)
-
             {
-                MessageBox.Show(ex.StackTrace, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.StackTrace, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
+            MtdMostrar();
+
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            CD_Vehiculos conn = new CD_Vehiculos();
+
+            try
+            {
+                conn.MtDelete(
+                    int.Parse(txtVehiculoId.Text));
+
+                MessageBox.Show("El Vehiculo se elimino con éxito", "Correcto",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.StackTrace, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            MtdMostrar();
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            CD_Vehiculos conn = new CD_Vehiculos();
+
+            try
+            {
+                conn.MtUpdate(
+                    int.Parse(txtVehiculoId.Text),txtMarca.Text, txtApellido.Text, int.Parse(txtFechaContratacion.Text),decimal.Parse(txtFechaContratacion.Text), cboxEstado.Text);
+
+                MessageBox.Show("El Vehiculo se actualizo con éxito", "Correcto",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.StackTrace, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            MtdMostrar();
         }
     }
 }
