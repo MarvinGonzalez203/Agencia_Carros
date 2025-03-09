@@ -175,8 +175,8 @@
             this.cboxEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(34)))), ((int)(((byte)(118)))));
             this.cboxEstado.FormattingEnabled = true;
             this.cboxEstado.Items.AddRange(new object[] {
-            "Activo",
-            "Inactivo"});
+            "Disponible ",
+            "Agotado"});
             this.cboxEstado.Location = new System.Drawing.Point(629, 148);
             this.cboxEstado.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cboxEstado.Name = "cboxEstado";
